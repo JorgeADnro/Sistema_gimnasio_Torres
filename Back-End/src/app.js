@@ -1,7 +1,9 @@
 import express from 'express';
 import morgan from 'morgan';
 import pkg from '../package.json';
-import usuariosRouts from './routes/usuarios.routes';
+
+import usuariosRoutes from './routes/usuarios.routes';
+import authRoutes from './routes/auth.routes';
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.get('/',(req,res) => {
     });
 });
 
-app.use('/usuarios',usuariosRouts);
+app.use('/api/usuarios',usuariosRoutes);
+app.use('/api/auth',authRoutes);
 
 export default app;

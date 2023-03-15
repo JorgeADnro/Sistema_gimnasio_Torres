@@ -13,17 +13,22 @@ export const createUsuarios = async (req,res)=>{
 export const getUsuarios = async (req,res)=>{
     const usuarios = await Usuario.find();
     res.json(usuarios);
-    
 }
 
-export const getUsuarioById = (req,res)=>{
-
+export const getUsuarioById = async (req,res)=>{
+    const usuarios = await Usuario.findById(req.params.usuarioId);
+    res.json(usuarios);
 }
 
-export const updateUsuariosById = (req,res)=>{
-
+export const updateUsuariosById = async (req,res)=>{
+    const usuarioUpdated = await Usuario.findByIdAndUpdate(req.params.usuarioId, req.body,{
+        new:true
+    });
+    res.status(204).json(usuarioUpdated);
 }
 
-export const deleteUsuariosById = (req,res)=>{
-
+export const deleteUsuariosById = async (req,res)=>{
+    const {usuarioId} = req.params;
+    await Usuario.findByIdAndDelete(usuarioId);
+    res.status(204).json();
 }

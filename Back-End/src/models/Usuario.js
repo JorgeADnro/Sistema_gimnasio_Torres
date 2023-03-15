@@ -1,6 +1,6 @@
 import {Schema,model} from 'mongoose';
 
-const UserSchema = new Schema({
+const UseruarioSchema = new Schema({
     name: String,
     role: String,
     imgURL: String,
@@ -10,4 +10,4 @@ const UserSchema = new Schema({
     versionKey: false
 })
 
-export default model('Usuario', UserSchema);
+export default model('Usuario', UseruarioSchema);
